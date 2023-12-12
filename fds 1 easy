@@ -1,0 +1,95 @@
+	CODE
+SEComp = []
+LC = []
+LB = []
+LF = []
+n = int(input("Enter the total number of students in class = "))
+for i in range(1,n+1):
+    SEComp.append(i)
+
+n =  int(input("Enter number of students who play cricket = "))
+for i in range(1,n+1):
+    x = int(input("Enter roll number of students who plays cricket = "))
+    LC.append(x)
+
+n =  int(input("Enter number of students who play basketball = "))
+for i in range(1,n+1):
+    x = int(input("Enter roll number of students who plays basketball = "))
+    LB.append(x)
+
+n =  int(input("Enter number of students who play football = "))
+for i in range(1,n+1):
+    x = int(input("Enter roll number of students who plays football = "))
+    LF.append(x)
+
+print("List of SEComp: ",SEComp)
+print("List of Cricket: ",LC)
+print("List of Basketball: ",LB)
+print("List of Football: ",LF)
+
+def unionL(LC,LB):
+    NewL = LC
+    for i in LB:
+        if i not in LC:
+            NewL.append(i)
+            return NewL
+
+
+def intersect(LC,LB):
+    NewL = []
+    for i in LC:
+        if i in LB:
+            NewL.append(i)
+            return NewL
+
+def difference(LC,LB):
+    NewL = []
+    for i in LC:
+        if i not in LB:
+            NewL.append(i)
+            return NewL
+
+def symdiff(LC,LB):
+    L3 = []
+    for i in LC:
+        if i not in LB:
+            L3.append(i)
+            return L3
+        
+
+while True:
+    print("**MENU**")
+    print("1.) List of students who play both cricket and basketball ")
+    print("2.) List of students who play either cricket or basketball but not both ")
+    print("3.) List of students who play neither cricket nor basketball ")
+    print("4.) List of students who play both cricket and football but not basketball ")
+    print("5.) EXIT ")
+    ch = int(input("Enter your choice between (1-5) : "))
+    if ch == 1:
+        L = intersect(LC,LB)
+        print("List of students who play both cricket and basketball:",L)
+    elif ch == 2:
+        L = symdiff(LC,LB)
+        print("List of students who play either cricket or basketball but not both:",L)
+    elif ch==3:
+        L = difference(SEComp,unionL(LC,LB))
+        print("List of students who play neither cricket nor basketball:",L)
+    elif ch == 4:
+        L = difference(unionL(LC,LF),LB)
+        print("List of students who play both cricket and football but not basketball:",L)
+    elif ch == 5:
+        print("THANKYOU!!")
+        break
+    else:
+        print("Invalid choice!!")
+
+
+
+
+
+
+
+
+
+
+
